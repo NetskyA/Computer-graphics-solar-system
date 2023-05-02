@@ -255,6 +255,7 @@ loader.load(
 //     earth.add(pesawat)
 //   }
 // )
+
 const moonLoader = new THREE.TextureLoader();
 const moonTexture = moonLoader.load('textures/moon.jpg')
 var moonGeometry = new THREE.SphereGeometry();
