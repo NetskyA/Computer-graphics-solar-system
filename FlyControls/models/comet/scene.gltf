@@ -1,0 +1,324 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 65533,
+      "max": [
+        0.990149974822998,
+        0.7449100017547607,
+        0.5856599807739258
+      ],
+      "min": [
+        -0.804830014705658,
+        -0.5802099704742432,
+        -0.5173599720001221
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 786396,
+      "componentType": 5126,
+      "count": 65533,
+      "max": [
+        0.9991195201873779,
+        0.9998164176940918,
+        0.9999544024467468
+      ],
+      "min": [
+        -0.9999703764915466,
+        -0.9999990463256836,
+        -0.9990758299827576
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 65535,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1572792,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.990149974822998,
+        0.7449100017547607,
+        0.5856599807739258
+      ],
+      "min": [
+        -0.804830014705658,
+        -0.5802099704742432,
+        -0.5175899863243103
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 2359176,
+      "componentType": 5126,
+      "count": 65532,
+      "max": [
+        0.9982374906539917,
+        0.9999881982803345,
+        0.9995627403259277
+      ],
+      "min": [
+        -0.9999127388000488,
+        -0.999972403049469,
+        -0.9994007349014282
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 262140,
+      "componentType": 5125,
+      "count": 65532,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3145560,
+      "componentType": 5126,
+      "count": 57657,
+      "max": [
+        0.990149974822998,
+        0.7449100017547607,
+        0.5856599807739258
+      ],
+      "min": [
+        -0.804830014705658,
+        -0.5802099704742432,
+        -0.5179399847984314
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3837444,
+      "componentType": 5126,
+      "count": 57657,
+      "max": [
+        0.9994217753410339,
+        0.9998615384101868,
+        0.9999921321868896
+      ],
+      "min": [
+        -0.9998670220375061,
+        -0.9998672604560852,
+        -0.9998444318771362
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 524268,
+      "componentType": 5125,
+      "count": 57657,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Steren (https://sketchfab.com/steren)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/esa-rosetta-comet-and-philaes-landing-site-464c6be099f046bc9716a587c06a81b6",
+      "title": "ESA Rosetta: Comet and Philae's landing site"
+    },
+    "generator": "Sketchfab-12.67.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 754896,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4529328,
+      "byteOffset": 754896,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 5284224,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Shape",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9,
+          0.9,
+          0.9,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.6
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "ShapeIndexedFaceSet",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "ShapeIndexedFaceSet",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "ShapeIndexedFaceSet",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6
+          },
+          "indices": 8,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        4
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        -0.29086000000000006,
+        0.9551700000000001,
+        -0.05519000000000001,
+        0.0,
+        -0.7711,
+        -0.19988000000000003,
+        0.6045200000000001,
+        0.0,
+        0.5663900000000001,
+        0.21839000000000003,
+        0.7946700000000001,
+        0.0,
+        4.076250000000001,
+        1.00545,
+        5.903860000000001,
+        1.0
+      ],
+      "name": "Lamp"
+    },
+    {
+      "name": "Lamp"
+    },
+    {
+      "children": [
+        5,
+        6,
+        7
+      ],
+      "matrix": [
+        -0.15721000000000004,
+        -0.6462900000000001,
+        0.7467200000000002,
+        0.0,
+        0.6318100000000001,
+        -0.6469600000000001,
+        -0.42693000000000003,
+        0.0,
+        0.7590200000000001,
+        0.40466,
+        0.51004,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "ShapeIndexedFaceSet"
+    },
+    {
+      "mesh": 0,
+      "name": "ShapeIndexedFaceSet"
+    },
+    {
+      "mesh": 1,
+      "name": "ShapeIndexedFaceSet"
+    },
+    {
+      "mesh": 2,
+      "name": "ShapeIndexedFaceSet"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

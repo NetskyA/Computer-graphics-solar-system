@@ -1,0 +1,11 @@
+Model Information:
+* title:	ESA Rosetta: Comet and Philae's landing site
+* source:	https://sketchfab.com/3d-models/esa-rosetta-comet-and-philaes-landing-site-464c6be099f046bc9716a587c06a81b6
+* author:	Steren (https://sketchfab.com/steren)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "ESA Rosetta: Comet and Philae's landing site" (https://sketchfab.com/3d-models/esa-rosetta-comet-and-philaes-landing-site-464c6be099f046bc9716a587c06a81b6) by Steren (https://sketchfab.com/steren) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Satelite
+* source:	https://sketchfab.com/3d-models/satelite-0c244a9be4154c848675a0d756bd0bc9
+* author:	Lexi4 (https://sketchfab.com/mr.alyxey13)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Satelite" (https://sketchfab.com/3d-models/satelite-0c244a9be4154c848675a0d756bd0bc9) by Lexi4 (https://sketchfab.com/mr.alyxey13) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
