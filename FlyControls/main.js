@@ -234,27 +234,27 @@ loader.load(
     scene.add(comet)
   }
 );
-// let pesawat;
-// loader.load(
-//   // resource URL
-//   'models/Pesawat.glb',
-//   function (gltf) {
-//     pesawat = gltf.scene;
-//     pesawat.position.x = 11;
-//     pesawat.position.y = -2;
-//     pesawat.position.z = 10;
-//     pesawat.scale.x = 0.10;
-//     pesawat.scale.y = 0.10;
-//     pesawat.scale.z = 0.10;
-//     pesawat.traverse(function (node) {
+let pesawat;
+loader.load(
+  // resource URL
+  'models/Pesawat.glb',
+  function (gltf) {
+    pesawat = gltf.scene;
+    pesawat.position.x = 11;
+    pesawat.position.y = -2;
+    pesawat.position.z = 10;
+    pesawat.scale.x = 0.10;
+    pesawat.scale.y = 0.10;
+    pesawat.scale.z = 0.10;
+    pesawat.traverse(function (node) {
 
-//       if (node.material) node.material.metalness = 0;
+      if (node.material) node.material.metalness = 0;
 
-//     });
-//     console.log(pesawat)
-//     earth.add(pesawat)
-//   }
-// )
+    });
+    console.log(pesawat)
+    earth.add(pesawat)
+  }
+)
 
 const moonLoader = new THREE.TextureLoader();
 const moonTexture = moonLoader.load('textures/moon.jpg')
