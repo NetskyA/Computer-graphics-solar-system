@@ -228,10 +228,55 @@ loader.load(
     comet.position.x = 10;
     comet.position.y = -2;
     comet.position.z = 10;
-    comet.scale.x = 1;
-    comet.scale.y = 1;
-    comet.scale.z = 1;
+    comet.scale.x = 0.5;
+    comet.scale.y = 0.5;
+    comet.scale.z = 0.5;
     scene.add(comet)
+  }
+);
+let comet2;
+loader.load(
+  // resource URL
+  'models/comet/scene.gltf',
+  function (gltf) {
+    comet2 = gltf.scene;
+    comet2.position.x = -10;
+    comet2.position.y = -5;
+    comet2.position.z = -10;
+    comet2.scale.x = 0.30;
+    comet2.scale.y = 0.30;
+    comet2.scale.z = 0.100;
+    scene.add(comet2)
+  }
+);
+let comet3;
+loader.load(
+  // resource URL
+  'models/comel.glb',
+  function (gltf) {
+    comet3 = gltf.scene;
+    comet3.position.x = 60;
+    comet3.position.y = -5;
+    comet3.position.z = 30;
+    comet3.scale.x = 0.030;
+    comet3.scale.y = 0.01;
+    comet3.scale.z = 0.030;
+    scene.add(comet3)
+  }
+);
+let comet4;
+loader.load(
+  // resource URL
+  'models/comel.glb',
+  function (gltf) {
+    comet4 = gltf.scene;
+    comet4.position.x = -1;
+    comet4.position.y = -10;
+    comet4.position.z = -10;
+    comet4.scale.x = 0.060;
+    comet4.scale.y = 0.060;
+    comet4.scale.z = 0.060;
+    scene.add(comet4)
   }
 );
 let pesawat;
@@ -323,12 +368,23 @@ controls.autoRotate = true;
 // scene.add(axesHelper);
 
 var mov = 0;
+var mov2 = 0;
+var mov3 = 80;
+var mov4 = 0;
+
 function animate() {
 
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
-  if(saturn!=undefined){
-    saturn.rotation.y+=0.1;
+  if (saturn != undefined) {
+    saturn.rotation.y += 0.1;
+    // saturn.rotation.z += 0.0001;
+    saturn.rotation.x += 0.001;
+  }
+  if (uranus != undefined) {
+    uranus.rotation.y += 0.01;
+    uranus.rotation.z += 0.001;
+    // saturn.rotation.x += 0.004;
   }
   sun.rotation.y += 0.0001369;
 
@@ -341,7 +397,28 @@ function animate() {
     comet.rotation.z += 0.003
     comet.rotation.y += 0.003
     mov += 0.005;
-    comet.position.set(25 * Math.cos(mov), comet.position.y, 20 * Math.sin(mov))
+    comet.position.set(15 * Math.cos(mov), comet.position.y, 12 * Math.sin(mov))
+  }
+  if (comet2 != undefined) {
+    comet2.rotation.x += -0.003
+    comet2.rotation.z += -0.003
+    comet2.rotation.y += -0.003
+    mov2 += -0.01;
+    comet2.position.set(5 * Math.cos(mov2), comet2.position.y, 2 * Math.sin(mov2))
+  }
+  if (comet3 != undefined) {
+    comet3.rotation.x += -0.03
+    comet3.rotation.z += -0.03
+    comet3.rotation.y += -0.03
+    mov3 += -0.0009;
+    comet3.position.set(65 * Math.cos(mov3), comet3.position.y, 60 * Math.sin(mov3))
+  }
+  if (comet4 != undefined) {
+    comet4.rotation.x += -0.003
+    comet4.rotation.z += -0.003
+    comet4.rotation.y += -0.003
+    mov4 += -0.009;
+    // comet4.position.set(65 * Math.cos(mov4), comet4.position.y, 60 * Math.sin(mov4))
   }
   composer.render();
 
