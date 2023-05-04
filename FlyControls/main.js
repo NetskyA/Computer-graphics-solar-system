@@ -25,7 +25,7 @@ scene.fog = new THREE.FogExp2(0xffffff, 0.002);
 
 
 const light = new THREE.PointLight(0xfdfbd3, 1.5);
-light.position.set(0, 7,);
+light.position.set(0, 5, 0);
 
 light.castShadow = true;
 light.shadow.mapSize.width = width;
