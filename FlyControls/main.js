@@ -300,6 +300,38 @@ loader.load(
     earth.add(pesawat)
   }
 )
+let cruiser;
+loader.load(
+  // resource URL
+  'models/cruiser.glb',
+  function (glb) {
+    cruiser = glb.scene;
+    cruiser.position.x = 10;
+    cruiser.position.y = 10;
+    cruiser.position.z = 20;
+    cruiser.scale.x = 6;
+    cruiser.scale.y = 6;
+    cruiser.scale.z = 6;
+    scene.add(cruiser)
+  }
+);
+let ufo;
+loader.load(
+  // resource URL
+  'models/ufo.glb',
+  function (glb) {
+    ufo = glb.scene;
+    ufo.position.x = -10;
+    ufo.position.y = 20;
+    ufo.position.z = 10;
+    ufo.scale.x = 0.30;
+    ufo.scale.y = 0.30;
+    ufo.scale.z = 0.30;
+    scene.add(ufo)
+  }
+);
+
+
 
 const moonLoader = new THREE.TextureLoader();
 const moonTexture = moonLoader.load('textures/moon.jpg')
@@ -355,7 +387,7 @@ window.addEventListener("resize", () => {
 //FlyControls
 const controls = new FlyControls(camera, renderer.domElement)
 controls.movementSpeed = 1;
-controls.rollSpeed =0.05;
+controls.rollSpeed = 0.05;
 controls.autoForward = false;
 controls.dragToLook = false;
 
@@ -413,12 +445,19 @@ function animate() {
     mov3 += -0.0009;
     comet3.position.set(65 * Math.cos(mov3), comet3.position.y, 60 * Math.sin(mov3))
   }
-  if (comet4 != undefined) {
-    comet4.rotation.x += -0.003
-    comet4.rotation.z += -0.003
-    comet4.rotation.y += -0.003
-    mov4 += -0.009;
-    // comet4.position.set(65 * Math.cos(mov4), comet4.position.y, 60 * Math.sin(mov4))
+  // if (comet4 != undefined) {
+  //   comet4.rotation.x += -0.003
+  //   comet4.rotation.z += -0.003
+  //   comet4.rotation.y += -0.003
+  //   mov4 += -0.009;
+  //   // comet4.position.set(65 * Math.cos(mov4), comet4.position.y, 60 * Math.sin(mov4))
+  // }
+  if (ufo != undefined) {
+    // ufo.rotation.x += -0.003
+    // ufo.rotation.z += -0.003
+    ufo.rotation.y += -0.03
+    mov4 += -0.0010;
+    ufo.position.set(-30 * Math.cos(mov4), ufo.position.y, -25 * Math.sin(mov4))
   }
   composer.render();
 
