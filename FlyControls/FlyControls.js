@@ -114,64 +114,64 @@ class FlyControls extends EventDispatcher {
 
 		this.pointerdown = function ( event ) {
 
-			if ( this.dragToLook ) {
+			// if ( this.dragToLook ) {
 
-				this.status ++;
+			// 	this.status ++;
 
-			} else {
+			// } else {
 
-				switch ( event.button ) {
+			// 	switch ( event.button ) {
 
-					case 0: this.moveState.forward = 1; break;
-					case 2: this.moveState.back = 1; break;
+			// 		case 0: this.moveState.forward = 1; break;
+			// 		case 2: this.moveState.back = 1; break;
 
-				}
+			// 	}
 
-				this.updateMovementVector();
+			// 	this.updateMovementVector();
 
-			}
+			// }
 
 		};
 
 		this.pointermove = function ( event ) {
 
-			if ( ! this.dragToLook || this.status > 0 ) {
+			// if ( ! this.dragToLook || this.status > 0 ) {
 
-				const container = this.getContainerDimensions();
-				const halfWidth = container.size[ 0 ] / 2;
-				const halfHeight = container.size[ 1 ] / 2;
+			// 	const container = this.getContainerDimensions();
+			// 	const halfWidth = container.size[ 0 ] / 2;
+			// 	const halfHeight = container.size[ 1 ] / 2;
 
-				this.moveState.yawLeft = - ( ( event.pageX - container.offset[ 0 ] ) - halfWidth ) / halfWidth;
-				this.moveState.pitchDown = ( ( event.pageY - container.offset[ 1 ] ) - halfHeight ) / halfHeight;
+			// 	this.moveState.yawLeft = - ( ( event.pageX - container.offset[ 0 ] ) - halfWidth ) / halfWidth;
+			// 	this.moveState.pitchDown = ( ( event.pageY - container.offset[ 1 ] ) - halfHeight ) / halfHeight;
 
-				this.updateRotationVector();
+			// 	this.updateRotationVector();
 
-			}
+			// }
 
 		};
 
 		this.pointerup = function ( event ) {
 
-			if ( this.dragToLook ) {
+			// if ( this.dragToLook ) {
 
-				this.status --;
+			// 	this.status --;
 
-				this.moveState.yawLeft = this.moveState.pitchDown = 0;
+			// 	this.moveState.yawLeft = this.moveState.pitchDown = 0;
 
-			} else {
+			// } else {
 
-				switch ( event.button ) {
+			// 	switch ( event.button ) {
 
-					case 0: this.moveState.forward = 0; break;
-					case 2: this.moveState.back = 0; break;
+			// 		case 0: this.moveState.forward = 0; break;
+			// 		case 2: this.moveState.back = 0; break;
 
-				}
+			// 	}
 
-				this.updateMovementVector();
+			// 	this.updateMovementVector();
 
-			}
+			// }
 
-			this.updateRotationVector();
+			// this.updateRotationVector();
 
 		};
 

@@ -353,15 +353,15 @@ window.addEventListener("resize", () => {
 });
 
 //FlyControls
-// const controls = new FlyControls(camera, renderer.domElement)
-// controls.movementSpeed = 1;
-// controls.rollSpeed =0.05;
-// controls.autoForward = false;
-// controls.dragToLook = false;
+const controls = new FlyControls(camera, renderer.domElement)
+controls.movementSpeed = 1;
+controls.rollSpeed =0.05;
+controls.autoForward = false;
+controls.dragToLook = false;
 
 // OrbitControls
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.autoRotate = true;
+const controls2 = new OrbitControls(camera, renderer.domElement);
+controls2.autoRotate = true;
 
 // axes
 // const axesHelper = new THREE.AxesHelper(20);
@@ -428,7 +428,8 @@ function animate() {
   // console.log(cube.position.x)
 
   //For FlyControls
-  // controls.update(0.05)
+  controls.update(0.05)
+  console.log(camera.position)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
