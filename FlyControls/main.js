@@ -283,22 +283,24 @@ let pesawat;
 loader.load(
   // resource URL
   'models/Pesawat.glb',
-  function (gltf) {
-    pesawat = gltf.scene;
-    pesawat.position.x = 11;
-    pesawat.position.y = -2;
+  function (glb) {
+    pesawat = glb.scene;
+    pesawat.position.x = -10;
+    pesawat.position.y = -10;
     pesawat.position.z = 10;
-    pesawat.scale.x = 0.10;
-    pesawat.scale.y = 0.10;
-    pesawat.scale.z = 0.10;
+    pesawat.scale.x = 0.15;
+    pesawat.scale.y = 0.15;
+    pesawat.scale.z = 0.15;
+    scene.add(pesawat)
     pesawat.traverse(function (node) {
 
       if (node.material) node.material.metalness = 0;
 
     });
     console.log(pesawat)
-    earth.add(pesawat)
+    mars.add(pesawat)
   }
+
 )
 let cruiser;
 loader.load(
@@ -346,6 +348,22 @@ loader.load(
     moon.add(rocket)
   }
 );
+let space;
+loader.load(
+  // resource URL
+  'models/space.glb',
+  function (glb) {
+    space = glb.scene;
+    space.position.x = 250;
+    space.position.y = -20;
+    space.position.z = -20;
+    space.scale.x = 50;
+    space.scale.y = 50;
+    space.scale.z = 50;
+    scene.add(space)
+  }
+);
+
 
 
 
@@ -419,6 +437,7 @@ var mov = 0;
 var mov2 = 0;
 var mov3 = 80;
 var mov4 = 0;
+var mov_psw = 80;
 
 var gerakRocket = 0.01;
 function animate() {
@@ -427,22 +446,39 @@ function animate() {
   earth.rotation.z += 0.0001;
   if (saturn != undefined) {
     saturn.rotation.y += 0.1;
-    // saturn.rotation.z += 0.0001;
     saturn.rotation.x += 0.001;
   }
-  if(rocket!=undefined){
-    rocket.position.y+=gerakRocket;
-    if(rocket.position.y>2){
-      gerakRocket*=-1;
-    }else if(rocket.position.y<=1){
-      gerakRocket*=-1;
+  if (jupiter != undefined) {
+    jupiter.rotation.y += 0.005;
+    mov3 += -0.0009;
+  }
+
+  if (venus != undefined) {
+    venus.rotation.y += -0.009;
+    venus.rotation.x += -0.001;
+    mov3 += -0.0009;
+  }
+  if (mars != undefined) {
+    mars.rotation.y += 0.009;
+    mars.rotation.x += 0.001;
+    mov3 += -0.0009;
+  }
+  if (space != undefined) {
+    space.rotation.z += 0.001;
+    mov += 0.0005;
+  }
+  if (rocket != undefined) {
+    rocket.position.y += gerakRocket;
+    if (rocket.position.y > 2) {
+      gerakRocket *= -1;
+    } else if (rocket.position.y <= 1) {
+      gerakRocket *= -1;
     }
     // console.log(rocket.position.y)
   }
   if (uranus != undefined) {
     uranus.rotation.y += 0.01;
     uranus.rotation.z += 0.001;
-    // saturn.rotation.x += 0.004;
   }
   sun.rotation.y += 0.0001369;
 
@@ -471,16 +507,15 @@ function animate() {
     mov3 += -0.0009;
     comet3.position.set(65 * Math.cos(mov3), comet3.position.y, 60 * Math.sin(mov3))
   }
-  // if (comet4 != undefined) {
-  //   comet4.rotation.x += -0.003
-  //   comet4.rotation.z += -0.003
-  //   comet4.rotation.y += -0.003
-  //   mov4 += -0.009;
-  //   // comet4.position.set(65 * Math.cos(mov4), comet4.position.y, 60 * Math.sin(mov4))
-  // }
+
+  if (pesawat != undefined) {
+    pesawat.rotation.x += 0.003
+    pesawat.rotation.z += 0.003
+    pesawat.rotation.y += 0.003
+    mov_psw += 0.009;
+    pesawat.position.set(25 * Math.cos(mov_psw), pesawat.position.y, 20 * Math.sin(mov_psw))
+  }
   if (ufo != undefined) {
-    // ufo.rotation.x += -0.003
-    // ufo.rotation.z += -0.003
     ufo.rotation.y += -0.03
     mov4 += -0.0010;
     ufo.position.set(-30 * Math.cos(mov4), ufo.position.y, -25 * Math.sin(mov4))
