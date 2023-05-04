@@ -331,6 +331,22 @@ loader.load(
   }
 );
 
+let rocket;
+loader.load(
+  // resource URL
+  'models/roket.glb',
+  function (glb) {
+    rocket = glb.scene;
+    rocket.position.x = 0;
+    rocket.position.y = 1;
+    rocket.position.z = 0;
+    rocket.scale.x = 0.20;
+    rocket.scale.y = 0.20;
+    rocket.scale.z = 0.20;
+    moon.add(rocket)
+  }
+);
+
 
 
 const moonLoader = new THREE.TextureLoader();
@@ -404,6 +420,7 @@ var mov2 = 0;
 var mov3 = 80;
 var mov4 = 0;
 
+var gerakRocket = 0.01;
 function animate() {
 
   earth.rotation.y += 0.005;
@@ -412,6 +429,15 @@ function animate() {
     saturn.rotation.y += 0.1;
     // saturn.rotation.z += 0.0001;
     saturn.rotation.x += 0.001;
+  }
+  if(rocket!=undefined){
+    rocket.position.y+=gerakRocket;
+    if(rocket.position.y>2){
+      gerakRocket*=-1;
+    }else if(rocket.position.y<=1){
+      gerakRocket*=-1;
+    }
+    // console.log(rocket.position.y)
   }
   if (uranus != undefined) {
     uranus.rotation.y += 0.01;
@@ -468,7 +494,6 @@ function animate() {
 
   //For FlyControls
   controls.update(0.05)
-  console.log(camera.position)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
