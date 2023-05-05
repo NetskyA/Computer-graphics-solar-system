@@ -13,7 +13,7 @@ let height = window.innerHeight;
 
 const backgroundLoader = new THREE.TextureLoader();
 
-const texture = backgroundLoader.load('textures/bg_sky_3.jpg')
+const texture = backgroundLoader.load('textures/bg_sky_6.png')
 
 const scene = new THREE.Scene();
 scene.background = texture;
@@ -228,10 +228,25 @@ loader.load(
     comet.position.x = 10;
     comet.position.y = -2;
     comet.position.z = 10;
-    comet.scale.x = 0.5;
+    comet.scale.x = 0.3;
     comet.scale.y = 0.5;
-    comet.scale.z = 0.5;
-    scene.add(comet)
+    comet.scale.z = 0.7;
+    earth.add(comet)
+  }
+);
+let comet1;
+loader.load(
+  // resource URL
+  'models/comet/scene.gltf',
+  function (gltf) {
+    comet1 = gltf.scene;
+    comet1.position.x = -6;
+    comet1.position.y = -2;
+    comet1.position.z = -6;
+    comet1.scale.x = 0.5;
+    comet1.scale.y = 0.5;
+    comet1.scale.z = 0.5;
+    scene.add(comet1)
   }
 );
 let comet2;
@@ -492,6 +507,13 @@ function animate() {
     comet.rotation.y += 0.003
     mov += 0.005;
     comet.position.set(15 * Math.cos(mov), comet.position.y, 12 * Math.sin(mov))
+  }
+  if (comet1 != undefined) {
+    comet1.rotation.x += -0.003
+    comet1.rotation.z += -0.003
+    comet1.rotation.y += -0.003
+    mov += 0.0009;
+    comet1.position.set(-15 * Math.cos(mov), comet1.position.y, -12 * Math.sin(mov))
   }
   if (comet2 != undefined) {
     comet2.rotation.x += -0.003
