@@ -268,8 +268,8 @@ let comet3;
 loader.load(
   // resource URL
   'models/comel.glb',
-  function (gltf) {
-    comet3 = gltf.scene;
+  function (glb) {
+    comet3 = glb.scene;
     comet3.position.x = 60;
     comet3.position.y = -5;
     comet3.position.z = 30;
@@ -283,8 +283,8 @@ let comet4;
 loader.load(
   // resource URL
   'models/comel.glb',
-  function (gltf) {
-    comet4 = gltf.scene;
+  function (glb) {
+    comet4 = glb.scene;
     comet4.position.x = -1;
     comet4.position.y = -10;
     comet4.position.z = -10;
