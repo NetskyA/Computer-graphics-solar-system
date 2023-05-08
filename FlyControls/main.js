@@ -25,7 +25,7 @@ scene.fog = new THREE.FogExp2(0xffffff, 0.002);
 
 
 const light = new THREE.PointLight(0xfdfbd3, 1.5);
-light.position.set(0, 5, 0);
+light.position.set(0, 0, 0);
 
 light.castShadow = true;
 light.shadow.mapSize.width = width;
@@ -66,6 +66,7 @@ var earthGeometry = new THREE.SphereGeometry();
 
 const earthMaterial = new THREE.MeshPhysicalMaterial();
 earthMaterial.bumpMap = earthTexture;
+earthMaterial.bumpScale = 0.2;
 earthMaterial.map = earthTexture;
 
 const earth = new THREE.Mesh(earthGeometry, earthMaterial)
@@ -115,6 +116,11 @@ loader.load(
     venus.scale.x = 0.003;
     venus.scale.y = 0.003;
     venus.scale.z = 0.003;
+    venus.traverse( function( node ) {
+
+      if ( node.isMesh ) { node.castShadow = true; }
+
+  } );
     venus.traverse(function (node) {
       if (node.material) node.material.metalness = 0;
 
@@ -371,8 +377,8 @@ moon.scale.x = 0.3;
 moon.scale.y = 0.3;
 moon.scale.z = 0.3;
 moon.position.x = 3.5;
-earth.receiveShadow = false;
-earth.castShadow = true;
+moon.receiveShadow = true;
+moon.castShadow = true;
 earth.add(moon)
 
 
