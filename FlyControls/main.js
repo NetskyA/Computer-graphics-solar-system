@@ -91,11 +91,15 @@ loader.load(
     merkurius.scale.x = 2;
     merkurius.scale.y = 2;
     merkurius.scale.z = 2;
+    merkurius.traverse( function( node ) {
+
+      if ( node.isMesh ) { node.castShadow = true; }
+
+  } );
     merkurius.traverse(function (node) {
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(merkurius)
     sun.add(merkurius)
   }
 );
@@ -115,7 +119,6 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(venus)
     sun.add(venus)
   }
 );
@@ -134,7 +137,6 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(mars)
     sun.add(mars)
   }
 );
@@ -145,6 +147,7 @@ loader.load(
   'models/Jupiter.glb',
   function (glb) {
     jupiter = glb.scene;
+    jupiter.receiveShadow = true;
     jupiter.castShadow = true;
     jupiter.position.x = -4.8;
     jupiter.scale.x = 0.065;
@@ -154,7 +157,6 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(jupiter)
     sun.add(jupiter)
   }
 );
@@ -175,7 +177,6 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(saturn)
     sun.add(saturn)
   }
 );
@@ -196,7 +197,6 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(uranus)
     sun.add(uranus)
   }
 );
@@ -279,21 +279,6 @@ loader.load(
     scene.add(comet3)
   }
 );
-let comet4;
-loader.load(
-  // resource URL
-  'models/comel.glb',
-  function (glb) {
-    comet4 = glb.scene;
-    comet4.position.x = -1;
-    comet4.position.y = -10;
-    comet4.position.z = -10;
-    comet4.scale.x = 0.060;
-    comet4.scale.y = 0.060;
-    comet4.scale.z = 0.060;
-    scene.add(comet4)
-  }
-);
 let pesawat;
 loader.load(
   // resource URL
@@ -312,7 +297,6 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
-    console.log(pesawat)
     mars.add(pesawat)
   }
 
@@ -329,6 +313,10 @@ loader.load(
     cruiser.scale.x = 6;
     cruiser.scale.y = 6;
     cruiser.scale.z = 6;
+    cruiser.traverse(function (node) {
+      if (node.material) node.material.metalness = 0;
+
+    });
     scene.add(cruiser)
   }
 );
@@ -344,6 +332,10 @@ loader.load(
     ufo.scale.x = 0.30;
     ufo.scale.y = 0.30;
     ufo.scale.z = 0.30;
+    ufo.traverse(function (node) {
+      if (node.material) node.material.metalness = 0;
+
+    });
     scene.add(ufo)
   }
 );
@@ -363,22 +355,7 @@ loader.load(
     moon.add(rocket)
   }
 );
-// let space;
-// loader.load(
-//   // resource URL
-//   'models/space.glb',
-//   function (glb) {
-//     space = glb.scene;
-//     space.position.x = 250;
-//     space.position.y = -20;
-//     space.position.z = -20;
-//     space.scale.x = 50;
-//     space.scale.y = 50;
-//     space.scale.z = 50;
-//     scene.add(space)
-//   }
-// );
-
+// 
 
 
 
@@ -435,7 +412,7 @@ window.addEventListener("resize", () => {
 
 //FlyControls
 const controls = new FlyControls(camera, renderer.domElement)
-controls.movementSpeed = 1;
+controls.movementSpeed = 20;
 controls.rollSpeed = 0.05;
 controls.autoForward = false;
 controls.dragToLook = false;
@@ -478,10 +455,7 @@ function animate() {
     mars.rotation.x += 0.001;
     mov3 += -0.0009;
   }
-  // if (space != undefined) {
-  //   space.rotation.z += 0.001;
-  //   mov += 0.0005;
-  // }
+
   if (rocket != undefined) {
     rocket.position.y += gerakRocket;
     if (rocket.position.y > 2) {
