@@ -66,7 +66,7 @@ var earthGeometry = new THREE.SphereGeometry();
 
 const earthMaterial = new THREE.MeshPhysicalMaterial();
 earthMaterial.bumpMap = earthTexture;
-earthMaterial.bumpScale = 0.2;
+earthMaterial.bumpScale = 0.01;
 earthMaterial.map = earthTexture;
 
 const earth = new THREE.Mesh(earthGeometry, earthMaterial)
@@ -92,11 +92,11 @@ loader.load(
     merkurius.scale.x = 2;
     merkurius.scale.y = 2;
     merkurius.scale.z = 2;
-    merkurius.traverse( function( node ) {
+    merkurius.traverse(function (node) {
 
-      if ( node.isMesh ) { node.castShadow = true; }
+      if (node.isMesh) { node.castShadow = true; }
 
-  } );
+    });
     merkurius.traverse(function (node) {
       if (node.material) node.material.metalness = 0;
 
@@ -116,11 +116,11 @@ loader.load(
     venus.scale.x = 0.003;
     venus.scale.y = 0.003;
     venus.scale.z = 0.003;
-    venus.traverse( function( node ) {
+    venus.traverse(function (node) {
 
-      if ( node.isMesh ) { node.castShadow = true; }
+      if (node.isMesh) { node.castShadow = true; }
 
-  } );
+    });
     venus.traverse(function (node) {
       if (node.material) node.material.metalness = 0;
 
