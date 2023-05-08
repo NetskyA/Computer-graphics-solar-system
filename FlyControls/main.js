@@ -13,7 +13,7 @@ let height = window.innerHeight;
 
 const backgroundLoader = new THREE.TextureLoader();
 
-const texture = backgroundLoader.load('textures/bg_sky_6.png')
+const texture = backgroundLoader.load('textures/bg_sky_4.jpg')
 
 const scene = new THREE.Scene();
 scene.background = texture;
@@ -363,21 +363,21 @@ loader.load(
     moon.add(rocket)
   }
 );
-let space;
-loader.load(
-  // resource URL
-  'models/space.glb',
-  function (glb) {
-    space = glb.scene;
-    space.position.x = 250;
-    space.position.y = -20;
-    space.position.z = -20;
-    space.scale.x = 50;
-    space.scale.y = 50;
-    space.scale.z = 50;
-    scene.add(space)
-  }
-);
+// let space;
+// loader.load(
+//   // resource URL
+//   'models/space.glb',
+//   function (glb) {
+//     space = glb.scene;
+//     space.position.x = 250;
+//     space.position.y = -20;
+//     space.position.z = -20;
+//     space.scale.x = 50;
+//     space.scale.y = 50;
+//     space.scale.z = 50;
+//     scene.add(space)
+//   }
+// );
 
 
 
@@ -478,10 +478,10 @@ function animate() {
     mars.rotation.x += 0.001;
     mov3 += -0.0009;
   }
-  if (space != undefined) {
-    space.rotation.z += 0.001;
-    mov += 0.0005;
-  }
+  // if (space != undefined) {
+  //   space.rotation.z += 0.001;
+  //   mov += 0.0005;
+  // }
   if (rocket != undefined) {
     rocket.position.y += gerakRocket;
     if (rocket.position.y > 2) {
