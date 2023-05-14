@@ -5,7 +5,7 @@ import { GLTFLoader } from "./GLTFLoader.js";
 import { EffectComposer } from './EffectComposer.js';
 import { RenderPass } from './RenderPass.js';
 import { UnrealBloomPass } from './UnrealBloomPass.js';
-
+import { PointerLockControls } from  "./PointerLockControls.js"
 
 
 let width = window.innerWidth;
@@ -385,8 +385,8 @@ earth.add(moon)
 
 // camera
 const camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
-camera.position.set(0, 10, 10);
-camera.lookAt(0, 0, 0);
+camera.position.set(0, 0, 30);
+// camera.lookAt(0, 0, 0);
 
 
 
@@ -423,13 +423,35 @@ controls.rollSpeed = 0.05;
 controls.autoForward = false;
 controls.dragToLook = false;
 
-// OrbitControls
+// // OrbitControls
 const controls2 = new OrbitControls(camera, renderer.domElement);
 controls2.autoRotate = true;
 
+
+//Pointerlock
+// const controls3 = new PointerLockControls(camera, renderer.domElement)
+// document.addEventListener( 'click', function () {
+
+//   controls3.lock();
+
+// },false );
 // axes
 // const axesHelper = new THREE.AxesHelper(20);
 // scene.add(axesHelper);
+
+// renderer.domElement.addEventListener('mousemove', event => {
+
+
+//             if(event.button == 0){
+//                 camera.position.y -= event.movementY * this.sensitivity
+//                 camera.position.x -= event.movementX * this.sensitivity        
+//             } else if(event.button == 2){
+//                 camera.quaternion.y -= event.movementX * this.sensitivity/10
+//                 camera.quaternion.x -= event.movementY * this.sensitivity/10
+//             }
+
+//             updateCallback()
+//         })    
 
 var mov = 0;
 var mov2 = 0;
@@ -438,6 +460,7 @@ var mov4 = 0;
 var mov_psw = 80;
 
 var gerakRocket = 0.01;
+
 function animate() {
 
   earth.rotation.y += 0.005;
