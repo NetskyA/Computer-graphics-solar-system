@@ -465,8 +465,16 @@ var mov4 = 0;
 var mov_psw = 80;
 
 var gerakRocket = 0.01;
-
+let boundingBoxMercurius;
+// boundingBoxMercurius.max = new THREE.Vector3(5.5,5.5,5.5);
+// boundingBoxMercurius.min = new THREE.Vector3(-5.5,-5.5,-5.5);
 function animate() {
+  if(merkurius!=undefined){
+    boundingBoxMercurius = new THREE.Box3().setFromObject(merkurius);
+    boundingBoxMercurius.max = new THREE.Vector3(boundingBoxMercurius.max.x+0.5,boundingBoxMercurius.max.y+0.5,boundingBoxMercurius.max.z+0.5);
+    boundingBoxMercurius.min = new THREE.Vector3(boundingBoxMercurius.min.x-0.5,boundingBoxMercurius.min.y-0.5,boundingBoxMercurius.min.z-0.5);
+    // console.log(boundingBoxMercurius)
+  }
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
   if (saturn != undefined) {
@@ -556,13 +564,13 @@ function animate() {
   // camera.lookAt(earth.position)
   // console.log(cube.position.x)
 
-  if(merkurius!=undefined){
-    var target = new THREE.Vector3(); // create once an reuse it
+  // if(merkurius!=undefined){
+  //   var target = new THREE.Vector3(); // create once an reuse it
 
-    merkurius.getWorldPosition( target );
-  }
+  //   merkurius.getWorldPosition( target );
+  // }
   //For FlyControls
-  controls.update(0.03)
+  controls.update(0.03,(merkurius!=undefined)?boundingBoxMercurius:null)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
