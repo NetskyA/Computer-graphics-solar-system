@@ -177,13 +177,13 @@ class FlyControls extends EventDispatcher {
 
 		};
 
-		this.update = function ( delta) {
+		this.update = function (delta) {
 
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
 
 			scope.object.translateX( scope.moveVector.x * moveMult );
-			scope.object.translateY( scope.moveVector.y * moveMult );
+			// scope.object.translateY( scope.moveVector.y * moveMult );
 			scope.object.translateZ( scope.moveVector.z * moveMult );
 
 			scope.tmpQuaternion.set( scope.rotationVector.x * rotMult, scope.rotationVector.y * rotMult, scope.rotationVector.z * rotMult, 1 ).normalize();
@@ -203,16 +203,37 @@ class FlyControls extends EventDispatcher {
 		};
 
 		this.updateMovementVector = function () {
-			if(this.object.position.z<20){
-				this.moveState.forward=0;
-				this.moveState.back=0;
+			const moveMult = 0.03 * scope.movementSpeed;
+			let forward = ( this.moveState.forward || ( this.autoForward && ! this.moveState.back ) ) ? 1 : 0;
+			let moveVector1 = ( - this.moveState.left + this.moveState.right );
+			let moveVector2 = ( - forward + this.moveState.back );
+			console.log(sun)
+			// console.log(JSON.stringify(sun.containsPoint(scope.object.translateX(moveVector1 * moveMult ).position))+JSON.stringify(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)))
+			if(this.moveState.back==1){
+				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.back=0;
+					forward=1
+				}
+			}else if(forward==1){
+				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					forward=0;
+					this.moveState.back=1;
+				}
+			}else if(this.moveState.left==1){
+				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.left=0;
+					this.moveState.right=1;
+				}
+			}else if(this.moveState.right==1){
+				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.left=1;
+					this.moveState.right=0;
+				}
 			}
-			const forward = ( this.moveState.forward || ( this.autoForward && ! this.moveState.back ) ) ? 1 : 0;
-
+			
 			this.moveVector.x = ( - this.moveState.left + this.moveState.right );
-			this.moveVector.y = ( - this.moveState.down + this.moveState.up );
+			// this.moveVector.y = ( - this.moveState.down + this.moveState.up );
 			this.moveVector.z = ( - forward + this.moveState.back );
-
 			//console.log( 'move:', [ this.moveVector.x, this.moveVector.y, this.moveVector.z ] );
 
 		};

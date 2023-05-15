@@ -57,6 +57,9 @@ sun.receiveShadow = true;
 sun.castShadow = true;
 
 scene.add(sun);
+let boundingBoxSun = new THREE.Box3().setFromObject(sun);
+boundingBoxSun.max = new THREE.Vector3(5.5,5.5,5.5);
+boundingBoxSun.min = new THREE.Vector3(-5.5,-5.5,-5.5);
 
 const earthLoader = new THREE.TextureLoader();
 
@@ -417,8 +420,9 @@ window.addEventListener("resize", () => {
 });
 
 //FlyControls
-const controls = new FlyControls(camera, renderer.domElement,sun)
-controls.movementSpeed = 20;
+
+const controls = new FlyControls(camera, renderer.domElement,boundingBoxSun)
+controls.movementSpeed = 5;
 controls.rollSpeed = 0.05;
 controls.autoForward = false;
 controls.dragToLook = false;
@@ -463,7 +467,6 @@ var mov_psw = 80;
 var gerakRocket = 0.01;
 
 function animate() {
-  controls
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
   if (saturn != undefined) {
@@ -553,14 +556,13 @@ function animate() {
   // camera.lookAt(earth.position)
   // console.log(cube.position.x)
 
-  console.log(`Camera : ${JSON.stringify(camera.position)}`);
   if(merkurius!=undefined){
     var target = new THREE.Vector3(); // create once an reuse it
 
-    console.log(merkurius.getWorldPosition( target ));
+    merkurius.getWorldPosition( target );
   }
   //For FlyControls
-  controls.update(0.05)
+  controls.update(0.03)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
