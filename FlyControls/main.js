@@ -417,24 +417,25 @@ window.addEventListener("resize", () => {
 });
 
 //FlyControls
-const controls = new FlyControls(camera, renderer.domElement)
+const controls = new FlyControls(camera, renderer.domElement,sun)
 controls.movementSpeed = 20;
 controls.rollSpeed = 0.05;
 controls.autoForward = false;
 controls.dragToLook = false;
 
 // // OrbitControls
-const controls2 = new OrbitControls(camera, renderer.domElement);
-controls2.autoRotate = true;
+// const controls2 = new OrbitControls(camera, renderer.domElement);
+// controls2.autoRotate = true;
 
 
 //Pointerlock
-// const controls3 = new PointerLockControls(camera, renderer.domElement)
-// document.addEventListener( 'click', function () {
+const controls3 = new PointerLockControls(camera, renderer.domElement)
+document.addEventListener( 'click', function () {
 
-//   controls3.lock();
+  controls3.lock();
 
-// },false );
+},false );
+
 // axes
 // const axesHelper = new THREE.AxesHelper(20);
 // scene.add(axesHelper);
@@ -462,7 +463,7 @@ var mov_psw = 80;
 var gerakRocket = 0.01;
 
 function animate() {
-
+  controls
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
   if (saturn != undefined) {
@@ -552,6 +553,12 @@ function animate() {
   // camera.lookAt(earth.position)
   // console.log(cube.position.x)
 
+  console.log(`Camera : ${JSON.stringify(camera.position)}`);
+  if(merkurius!=undefined){
+    var target = new THREE.Vector3(); // create once an reuse it
+
+    console.log(merkurius.getWorldPosition( target ));
+  }
   //For FlyControls
   controls.update(0.05)
   requestAnimationFrame(animate);

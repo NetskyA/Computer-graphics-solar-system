@@ -8,13 +8,15 @@ const _changeEvent = { type: 'change' };
 
 class FlyControls extends EventDispatcher {
 
-	constructor( object, domElement ) {
+	constructor( object, domElement,sun ) {
 
 		super();
 
 		this.object = object;
 		this.domElement = domElement;
 
+
+		this.sun = sun;
 		// API
 
 		this.movementSpeed = 1.0;
@@ -175,7 +177,7 @@ class FlyControls extends EventDispatcher {
 
 		};
 
-		this.update = function ( delta ) {
+		this.update = function ( delta) {
 
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
@@ -201,7 +203,10 @@ class FlyControls extends EventDispatcher {
 		};
 
 		this.updateMovementVector = function () {
-
+			if(this.object.position.z<20){
+				this.moveState.forward=0;
+				this.moveState.back=0;
+			}
 			const forward = ( this.moveState.forward || ( this.autoForward && ! this.moveState.back ) ) ? 1 : 0;
 
 			this.moveVector.x = ( - this.moveState.left + this.moveState.right );
