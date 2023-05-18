@@ -80,7 +80,6 @@ earth.scale.y = 0.2;
 earth.scale.z = 0.2;
 earth.receiveShadow = false;
 earth.castShadow = true;
-
 sun.add(earth)
 
 const loader = new GLTFLoader();
@@ -345,6 +344,7 @@ loader.load(
       if (node.material) node.material.metalness = 0;
 
     });
+    console.log(ufo)
     scene.add(ufo)
   }
 );
@@ -466,6 +466,8 @@ var mov_psw = 80;
 
 var gerakRocket = 0.01;
 let boundingBoxMercurius;
+let boundingBoxVenus;
+let boundingBoxEarth;
 // boundingBoxMercurius.max = new THREE.Vector3(5.5,5.5,5.5);
 // boundingBoxMercurius.min = new THREE.Vector3(-5.5,-5.5,-5.5);
 function animate() {
@@ -475,6 +477,14 @@ function animate() {
     boundingBoxMercurius.min = new THREE.Vector3(boundingBoxMercurius.min.x-0.5,boundingBoxMercurius.min.y-0.5,boundingBoxMercurius.min.z-0.5);
     // console.log(boundingBoxMercurius)
   }
+  if(venus!=undefined){
+    boundingBoxVenus = new THREE.Box3().setFromObject(venus);
+    boundingBoxVenus.max = new THREE.Vector3(boundingBoxVenus.max.x+0.5,boundingBoxVenus.max.y+0.5,boundingBoxVenus.max.z+0.5);
+    boundingBoxVenus.min = new THREE.Vector3(boundingBoxVenus.min.x-0.5,boundingBoxVenus.min.y-0.5,boundingBoxVenus.min.z-0.5);
+    // console.log(boundingBoxMercurius)
+  }
+  boundingBoxEarth = new THREE.Box3().setFromObject(earth);
+
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
   if (saturn != undefined) {
@@ -570,7 +580,7 @@ function animate() {
   //   merkurius.getWorldPosition( target );
   // }
   //For FlyControls
-  controls.update(0.03,(merkurius!=undefined)?boundingBoxMercurius:null)
+  controls.update(0.03,(merkurius!=undefined)?boundingBoxMercurius:null,(venus!=undefined)?boundingBoxVenus:null,boundingBoxEarth)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");

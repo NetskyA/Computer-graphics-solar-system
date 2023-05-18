@@ -18,6 +18,8 @@ class FlyControls extends EventDispatcher {
 
 		this.sun = sun;
 		this.merkurius;
+		this.venus;
+		this.earth;
 		// API
 
 		this.movementSpeed = 1.0;
@@ -178,8 +180,10 @@ class FlyControls extends EventDispatcher {
 
 		};
 
-		this.update = function (delta,merkurius) {
-			this.merkurius=merkurius
+		this.update = function (delta,merkurius,venus,earth) {
+			this.merkurius = merkurius;
+			this.venus = venus;
+			this.earth = earth;
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
 
@@ -211,38 +215,70 @@ class FlyControls extends EventDispatcher {
 			// console.log(this.merkurius)
 			// console.log(JSON.stringify(sun.containsPoint(scope.object.translateX(moveVector1 * moveMult ).position))+JSON.stringify(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)))
 			if(this.moveState.back==1){
-				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveState.back=0;
 					forward=1
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.back=0;
+					forward=1
+				}
+				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.back=0;
+					forward=1
+				}
+				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveState.back=0;
 					forward=1
 				}
 			}else if(forward==1){
-				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					forward=0;
 					this.moveState.back=1;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					forward=0;
+					this.moveState.back=1;
+				}
+				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					forward=0;
+					this.moveState.back=1;
+				}
+				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					forward=0;
 					this.moveState.back=1;
 				}
 			}else if(this.moveState.left==1){
-				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveState.left=0;
 					this.moveState.right=1;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.left=0;
+					this.moveState.right=1;
+				}
+				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.left=0;
+					this.moveState.right=1;
+				}
+				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveState.left=0;
 					this.moveState.right=1;
 				}
 			}else if(this.moveState.right==1){
-				if(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveState.left=1;
 					this.moveState.right=0;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.left=1;
+					this.moveState.right=0;
+				}
+				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveState.left=1;
+					this.moveState.right=0;
+				}
+				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveState.left=1;
 					this.moveState.right=0;
 				}
