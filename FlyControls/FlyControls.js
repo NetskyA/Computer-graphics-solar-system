@@ -20,6 +20,11 @@ class FlyControls extends EventDispatcher {
 		this.merkurius;
 		this.venus;
 		this.earth;
+		this.moon;
+		this.mars;
+		this.jupiter;
+		this.saturn;
+		this.uranus;
 		// API
 
 		this.movementSpeed = 1.0;
@@ -180,10 +185,15 @@ class FlyControls extends EventDispatcher {
 
 		};
 
-		this.update = function (delta,merkurius,venus,earth) {
+		this.update = function (delta,merkurius,venus,earth,moon,mars,jupiter,saturn,uranus) {
 			this.merkurius = merkurius;
 			this.venus = venus;
 			this.earth = earth;
+			this.moon = moon;
+			this.mars = mars;
+			this.jupiter = jupiter;
+			this.saturn = saturn;
+			this.uranus = uranus;
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
 
@@ -213,81 +223,168 @@ class FlyControls extends EventDispatcher {
 			let moveVector1 = ( - this.moveState.left + this.moveState.right );
 			let moveVector2 = ( - forward + this.moveState.back );
 			// console.log(this.merkurius)
-			// console.log(JSON.stringify(sun.containsPoint(scope.object.translateX(moveVector1 * moveMult ).position))+JSON.stringify(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)))
+			let manual = false;
+			// console.log(JSON.stringify(sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position))+this.moveState.forward)
 			if(this.moveState.back==1){
 				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.back=0;
-					forward=1
+					this.moveVector.z = -5;
+					manual=true;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.back=0;
-					forward=1
+					this.moveVector.z = -5;
+					manual=true;
 				}
 				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.back=0;
-					forward=1
+					this.moveVector.z = -5;
+					manual=true;
 				}
 				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.back=0;
-					forward=1
+					this.moveVector.z = -5;
+					manual=true;
 				}
+				if(this.moon.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
+				if(this.mars.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
+				if(this.jupiter.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
+				if(this.saturn.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
+				if(this.uranus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
+				if(!manual)this.moveVector.z = ( - forward + this.moveState.back);
 			}else if(forward==1){
 				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					forward=0;
-					this.moveState.back=1;
+					this.moveVector.z = 5;
+					manual=true;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					forward=0;
-					this.moveState.back=1;
+					this.moveVector.z = 5;
+					manual=true;
 				}
 				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					forward=0;
-					this.moveState.back=1;
+					this.moveVector.z = 5;
+					manual=true;
 				}
 				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					forward=0;
-					this.moveState.back=1;
+					this.moveVector.z = 5;
+					manual=true;
 				}
+				if(this.moon.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(this.mars.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(this.jupiter.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(this.saturn.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(this.uranus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(!manual)this.moveVector.z = ( - forward + this.moveState.back);
 			}else if(this.moveState.left==1){
 				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=0;
-					this.moveState.right=1;
+					this.moveVector.x = 5;
+					manual=true;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=0;
-					this.moveState.right=1;
+					this.moveVector.x = 5;
+					manual=true;
 				}
 				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=0;
-					this.moveState.right=1;
+					this.moveVector.x = 5;
+					manual=true;
 				}
 				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=0;
-					this.moveState.right=1;
+					this.moveVector.x = 5;
+					manual=true;
 				}
+				if(this.moon.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
+				if(this.mars.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
+				if(this.jupiter.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
+				if(this.saturn.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
+				if(this.uranus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
+				if(!manual)this.moveVector.x = ( - this.moveState.left + this.moveState.right );
 			}else if(this.moveState.right==1){
 				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=1;
-					this.moveState.right=0;
+					this.moveVector.x = -5;
+					manual=true;
 				}
 				if(this.merkurius.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=1;
-					this.moveState.right=0;
+					this.moveVector.x = -5;
+					manual=true;
 				}
 				if(this.venus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=1;
-					this.moveState.right=0;
+					this.moveVector.x = -5;
+					manual=true;
 				}
 				if(this.earth.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
-					this.moveState.left=1;
-					this.moveState.right=0;
+					this.moveVector.x = -5;
+					manual=true;
 				}
+				if(this.moon.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(this.mars.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(this.jupiter.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(this.saturn.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(this.uranus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(!manual)this.moveVector.x = ( - this.moveState.left + this.moveState.right );
+			}else{
+				this.moveVector.x = 0;
+				this.moveVector.z = 0;
 			}
 			
-			this.moveVector.x = ( - this.moveState.left + this.moveState.right );
+			// this.moveVector.x = ( - this.moveState.left + this.moveState.right );
 			// this.moveVector.y = ( - this.moveState.down + this.moveState.up );
-			this.moveVector.z = ( - forward + this.moveState.back );
-			//console.log( 'move:', [ this.moveVector.x, this.moveVector.y, this.moveVector.z ] );
+			console.log( 'move:', [ this.moveVector.x, this.moveVector.z ] );
 
 		};
 

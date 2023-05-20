@@ -468,6 +468,11 @@ var gerakRocket = 0.01;
 let boundingBoxMercurius;
 let boundingBoxVenus;
 let boundingBoxEarth;
+let boundingBoxMars;
+let boundingBoxMoon;
+let boundingBoxJupiter;
+let boundingBoxSaturn;
+let boundingBoxUranus;
 // boundingBoxMercurius.max = new THREE.Vector3(5.5,5.5,5.5);
 // boundingBoxMercurius.min = new THREE.Vector3(-5.5,-5.5,-5.5);
 function animate() {
@@ -483,7 +488,32 @@ function animate() {
     boundingBoxVenus.min = new THREE.Vector3(boundingBoxVenus.min.x-0.5,boundingBoxVenus.min.y-0.5,boundingBoxVenus.min.z-0.5);
     // console.log(boundingBoxMercurius)
   }
+  if(mars!=undefined){
+    boundingBoxMars = new THREE.Box3().setFromObject(mars);
+    boundingBoxMars.max = new THREE.Vector3(boundingBoxMars.max.x+0.5,boundingBoxMars.max.y+0.5,boundingBoxMars.max.z+0.5);
+    boundingBoxMars.min = new THREE.Vector3(boundingBoxMars.min.x-0.5,boundingBoxMars.min.y-0.5,boundingBoxMars.min.z-0.5);
+    // console.log(boundingBoxMercurius)
+  }
+  if(jupiter!=undefined){
+    boundingBoxJupiter = new THREE.Box3().setFromObject(jupiter);
+    boundingBoxJupiter.max = new THREE.Vector3(boundingBoxJupiter.max.x+0.5,boundingBoxJupiter.max.y+0.5,boundingBoxJupiter.max.z+0.5);
+    boundingBoxJupiter.min = new THREE.Vector3(boundingBoxJupiter.min.x-0.5,boundingBoxJupiter.min.y-0.5,boundingBoxJupiter.min.z-0.5);
+    // console.log(boundingBoxMercurius)
+  }
+  if(saturn!=undefined){
+    boundingBoxSaturn = new THREE.Box3().setFromObject(saturn);
+    boundingBoxSaturn.max = new THREE.Vector3(boundingBoxSaturn.max.x+0.5,boundingBoxSaturn.max.y+0.5,boundingBoxSaturn.max.z+0.5);
+    boundingBoxSaturn.min = new THREE.Vector3(boundingBoxSaturn.min.x-0.5,boundingBoxSaturn.min.y-0.5,boundingBoxSaturn.min.z-0.5);
+    // console.log(boundingBoxMercurius)
+  }
+  if(uranus!=undefined){
+    boundingBoxUranus = new THREE.Box3().setFromObject(uranus);
+    boundingBoxUranus.max = new THREE.Vector3(boundingBoxUranus.max.x+0.5,boundingBoxUranus.max.y+0.5,boundingBoxUranus.max.z+0.5);
+    boundingBoxUranus.min = new THREE.Vector3(boundingBoxUranus.min.x-0.5,boundingBoxUranus.min.y-0.5,boundingBoxUranus.min.z-0.5);
+    // console.log(boundingBoxMercurius)
+  }
   boundingBoxEarth = new THREE.Box3().setFromObject(earth);
+  boundingBoxMoon = new THREE.Box3().setFromObject(moon);
 
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
@@ -580,7 +610,7 @@ function animate() {
   //   merkurius.getWorldPosition( target );
   // }
   //For FlyControls
-  controls.update(0.03,(merkurius!=undefined)?boundingBoxMercurius:null,(venus!=undefined)?boundingBoxVenus:null,boundingBoxEarth)
+  controls.update(0.03,(merkurius!=undefined)?boundingBoxMercurius:null,(venus!=undefined)?boundingBoxVenus:null,boundingBoxEarth,boundingBoxMoon,(mars!=undefined)?boundingBoxMars:null,(jupiter!=undefined)?boundingBoxJupiter:null,(saturn!=undefined)?boundingBoxSaturn:null,(uranus!=undefined)?boundingBoxUranus:null)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
