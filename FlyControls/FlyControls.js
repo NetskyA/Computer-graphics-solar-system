@@ -25,6 +25,8 @@ class FlyControls extends EventDispatcher {
 		this.jupiter;
 		this.saturn;
 		this.uranus;
+		this.cruiser;
+		this.ufo;
 		// API
 
 		this.movementSpeed = 1.0;
@@ -185,7 +187,7 @@ class FlyControls extends EventDispatcher {
 
 		};
 
-		this.update = function (delta,merkurius,venus,earth,moon,mars,jupiter,saturn,uranus) {
+		this.update = function (delta,merkurius,venus,earth,moon,mars,jupiter,saturn,uranus,cruiser,ufo) {
 			this.merkurius = merkurius;
 			this.venus = venus;
 			this.earth = earth;
@@ -193,6 +195,8 @@ class FlyControls extends EventDispatcher {
 			this.mars = mars;
 			this.jupiter = jupiter;
 			this.saturn = saturn;
+			this.cruiser = cruiser;
+			this.ufo = ufo;
 			this.uranus = uranus;
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
@@ -218,7 +222,7 @@ class FlyControls extends EventDispatcher {
 		};
 
 		this.updateMovementVector = function () {
-			const moveMult = 0.03 * scope.movementSpeed;
+			const moveMult = 0.005 * scope.movementSpeed;
 			let forward = ( this.moveState.forward || ( this.autoForward && ! this.moveState.back ) ) ? 1 : 0;
 			let moveVector1 = ( - this.moveState.left + this.moveState.right );
 			let moveVector2 = ( - forward + this.moveState.back );
@@ -262,6 +266,14 @@ class FlyControls extends EventDispatcher {
 					this.moveVector.z = -5;
 					manual=true;
 				}
+				if(this.cruiser.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
+				if(this.ufo.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = -5;
+					manual=true;
+				}
 				if(!manual)this.moveVector.z = ( - forward + this.moveState.back);
 			}else if(forward==1){
 				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
@@ -297,6 +309,14 @@ class FlyControls extends EventDispatcher {
 					manual=true;
 				}
 				if(this.uranus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(this.cruiser.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.z = 5;
+					manual=true;
+				}
+				if(this.ufo.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveVector.z = 5;
 					manual=true;
 				}
@@ -338,6 +358,14 @@ class FlyControls extends EventDispatcher {
 					this.moveVector.x = 5;
 					manual=true;
 				}
+				if(this.cruiser.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
+				if(this.ufo.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = 5;
+					manual=true;
+				}
 				if(!manual)this.moveVector.x = ( - this.moveState.left + this.moveState.right );
 			}else if(this.moveState.right==1){
 				if(this.sun.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
@@ -373,6 +401,14 @@ class FlyControls extends EventDispatcher {
 					manual=true;
 				}
 				if(this.uranus.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(this.cruiser.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
+					this.moveVector.x = -5;
+					manual=true;
+				}
+				if(this.ufo.containsPoint(scope.object.translateZ(moveVector2 * moveMult ).position)){
 					this.moveVector.x = -5;
 					manual=true;
 				}

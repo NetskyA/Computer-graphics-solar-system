@@ -328,6 +328,7 @@ loader.load(
     scene.add(cruiser)
   }
 );
+
 let ufo;
 loader.load(
   // resource URL
@@ -473,6 +474,8 @@ let boundingBoxMoon;
 let boundingBoxJupiter;
 let boundingBoxSaturn;
 let boundingBoxUranus;
+let boundingBoxCruiser;
+let boundingBoxUfo;
 // boundingBoxMercurius.max = new THREE.Vector3(5.5,5.5,5.5);
 // boundingBoxMercurius.min = new THREE.Vector3(-5.5,-5.5,-5.5);
 function animate() {
@@ -514,7 +517,16 @@ function animate() {
   }
   boundingBoxEarth = new THREE.Box3().setFromObject(earth);
   boundingBoxMoon = new THREE.Box3().setFromObject(moon);
-
+  if(cruiser!=undefined){
+    boundingBoxCruiser = new THREE.Box3().setFromObject(cruiser);
+    boundingBoxCruiser.max = new THREE.Vector3(boundingBoxCruiser.max.x+0.5,boundingBoxCruiser.max.y+0.5,boundingBoxCruiser.max.z+0.5);
+    boundingBoxCruiser.min = new THREE.Vector3(boundingBoxCruiser.min.x-0.5,boundingBoxCruiser.min.y-0.5,boundingBoxCruiser.min.z-0.5);
+  }
+  if(ufo!=undefined){
+    boundingBoxUfo = new THREE.Box3().setFromObject(ufo);
+    boundingBoxUfo.max = new THREE.Vector3(boundingBoxUfo.max.x+0.5,boundingBoxUfo.max.y+0.5,boundingBoxUfo.max.z+0.5);
+    boundingBoxUfo.min = new THREE.Vector3(boundingBoxUfo.min.x-0.5,boundingBoxUfo.min.y-0.5,boundingBoxUfo.min.z-0.5);
+  }
   earth.rotation.y += 0.005;
   earth.rotation.z += 0.0001;
   if (saturn != undefined) {
@@ -610,7 +622,7 @@ function animate() {
   //   merkurius.getWorldPosition( target );
   // }
   //For FlyControls
-  controls.update(0.03,(merkurius!=undefined)?boundingBoxMercurius:null,(venus!=undefined)?boundingBoxVenus:null,boundingBoxEarth,boundingBoxMoon,(mars!=undefined)?boundingBoxMars:null,(jupiter!=undefined)?boundingBoxJupiter:null,(saturn!=undefined)?boundingBoxSaturn:null,(uranus!=undefined)?boundingBoxUranus:null)
+  controls.update(0.005,(merkurius!=undefined)?boundingBoxMercurius:null,(venus!=undefined)?boundingBoxVenus:null,boundingBoxEarth,boundingBoxMoon,(mars!=undefined)?boundingBoxMars:null,(jupiter!=undefined)?boundingBoxJupiter:null,(saturn!=undefined)?boundingBoxSaturn:null,(uranus!=undefined)?boundingBoxUranus:null,(cruiser!=undefined)?boundingBoxCruiser:null,(ufo!=undefined)?boundingBoxUfo:null)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
