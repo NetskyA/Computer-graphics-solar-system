@@ -628,7 +628,7 @@ function animate() {
   //   merkurius.getWorldPosition( target );
   // }
   //For FlyControls
-  controls.update(0.005, (merkurius != undefined) ? boundingBoxMercurius : null, (venus != undefined) ? boundingBoxVenus : null, boundingBoxEarth, boundingBoxMoon, (mars != undefined) ? boundingBoxMars : null, (jupiter != undefined) ? boundingBoxJupiter : null, (saturn != undefined) ? boundingBoxSaturn : null, (uranus != undefined) ? boundingBoxUranus : null, (cruiser != undefined) ? boundingBoxCruiser : null, (ufo != undefined) ? boundingBoxUfo : null)
+  controls.update(0.003, (merkurius != undefined) ? boundingBoxMercurius : null, (venus != undefined) ? boundingBoxVenus : null, boundingBoxEarth, boundingBoxMoon, (mars != undefined) ? boundingBoxMars : null, (jupiter != undefined) ? boundingBoxJupiter : null, (saturn != undefined) ? boundingBoxSaturn : null, (uranus != undefined) ? boundingBoxUranus : null, (cruiser != undefined) ? boundingBoxCruiser : null, (ufo != undefined) ? boundingBoxUfo : null)
   requestAnimationFrame(animate);
 }
 const container = document.querySelector("#container3D");
