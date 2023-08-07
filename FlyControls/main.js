@@ -13,7 +13,7 @@ let height = window.innerHeight;
 
 const backgroundLoader = new THREE.TextureLoader();
 
-const texture = backgroundLoader.load('textures/bg_sky_4.jpg')
+const texture = backgroundLoader.load('textures/bg_sky_6.png')
 
 const scene = new THREE.Scene();
 scene.background = texture;
